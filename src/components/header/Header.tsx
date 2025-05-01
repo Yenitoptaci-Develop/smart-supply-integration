@@ -48,7 +48,7 @@ export const Header = ({
               alt="Logo" 
               className="h-12 w-auto object-contain" 
             />
-            <h1 className="ml-4 text-2xl font-bold text-gray-900">Restoran Tedarik</h1>
+            <h1 className="ml-4 text-2xl font-bold text-gray-900">Zeynep's Butique</h1>
           </div>
           <div className="flex items-center justify-center gap-4 mt-4">
             {isMobile ? (

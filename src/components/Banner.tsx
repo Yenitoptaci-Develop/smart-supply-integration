@@ -14,22 +14,22 @@ export const Banner = ({ className }: BannerProps) => {
       id: 1,
       src: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
       alt: "Banner image 1",
-      title: "Profesyonel Mutfak Ekipmanları",
-      subtitle: "En kaliteli ürünlerle işletmenizi destekleyin"
+      title: "Premium Boutique Collection",
+      subtitle: "Discover our exclusive selection of unique items"
     },
     {
       id: 2,
       src: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
       alt: "Banner image 2",
-      title: "Yeni Ürünler",
-      subtitle: "Mutfağınızı yenileyin"
+      title: "New Arrivals",
+      subtitle: "Explore our latest fashion trends"
     },
     {
       id: 3,
       src: "https://images.unsplash.com/photo-1500673922987-e212871fec22",
       alt: "Banner image 3",
-      title: "Özel Fırsatlar",
-      subtitle: "Kaçırılmayacak indirimler"
+      title: "Special Offers",
+      subtitle: "Don't miss our limited time discounts"
     }
   ];
 

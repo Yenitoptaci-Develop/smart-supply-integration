@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +7,7 @@ import { Product } from "@/types/product";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Header } from "@/components/header/Header";
 import { Banner } from "@/components/Banner";
+import { Footer } from "@/components/Footer";
 
 const products: Product[] = [
   {
@@ -286,7 +286,7 @@ const ProductCatalog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <Header 
         cart={cart}
         cartTotalQuantity={cartTotalQuantity}
@@ -300,7 +300,7 @@ const ProductCatalog = () => {
         isMobile={isMobile}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
         <Banner className="mb-8" />
         
         <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -345,6 +345,8 @@ const ProductCatalog = () => {
           ))}
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 };

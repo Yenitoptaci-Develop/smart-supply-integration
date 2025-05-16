@@ -12,24 +12,24 @@ export const Banner = ({ className }: BannerProps) => {
   const bannerImages = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
-      alt: "Banner image 1",
-      title: "Premium Boutique Collection",
-      subtitle: "Discover our exclusive selection of unique items"
+      src: "https://images.unsplash.com/photo-1582978087598-088c059ea414",
+      alt: "El örgüsü koleksiyonu",
+      title: "El Yapımı Özel Koleksiyon",
+      subtitle: "Birbirinden özel el örgüsü ürünleri keşfedin"
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-      alt: "Banner image 2",
-      title: "New Arrivals",
-      subtitle: "Explore our latest fashion trends"
+      src: "https://images.unsplash.com/photo-1579724138975-1308fc0c50fd",
+      alt: "Yeni sezon ürünleri",
+      title: "Yeni Sezon Ürünleri",
+      subtitle: "En son el örgüsü tasarımlarımızı inceleyin"
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1500673922987-e212871fec22",
-      alt: "Banner image 3",
-      title: "Special Offers",
-      subtitle: "Don't miss our limited time discounts"
+      src: "https://images.unsplash.com/photo-1624593911234-94fc11d1d214",
+      alt: "Özel indirimler",
+      title: "Özel İndirimler",
+      subtitle: "Sınırlı süre için özel fiyatları kaçırmayın"
     }
   ];
 

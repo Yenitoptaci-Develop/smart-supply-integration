@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -12,194 +13,194 @@ import { Footer } from "@/components/Footer";
 const products: Product[] = [
   {
     id: 1,
-    name: "Endüstriyel Bulaşık Makinesi",
-    price: 45000,
-    category: "Mutfak Ekipmanları",
+    name: "El Örgüsü Kazak - Kırmızı",
+    price: 450,
+    category: "Kazaklar",
     unit: "adet",
-    image: "https://images.unsplash.com/photo-1585090944524-75496c0e0b21",
-    supplier: "Endüstriyel Mutfak Ltd.",
-    description: "Profesyonel mutfaklar için yüksek kapasiteli, enerji verimli endüstriyel bulaşık makinesi. Saatte 500 tabak yıkama kapasitesi.",
-    desi: 50,
+    image: "https://images.unsplash.com/photo-1580331451062-99ff652288d7",
+    supplier: "Zeynep's Handmade",
+    description: "Saf yünden el örgüsü, sıcak tutan kırmızı kazak. Özel desenli, yumuşak dokulu.",
+    desi: 2,
     additionalImages: [
-      "https://images.unsplash.com/photo-1585090944524-75496c0e0b21",
-      "https://images.unsplash.com/photo-1585090944524-75496c0e0b22",
-      "https://images.unsplash.com/photo-1585090944524-75496c0e0b23"
+      "https://images.unsplash.com/photo-1580331451062-99ff652288d7",
+      "https://images.unsplash.com/photo-1603744038347-36bfc67ca481",
+      "https://images.unsplash.com/photo-1564557287817-3785e38ec1f5"
     ]
   },
   {
     id: 2,
-    name: "Profesyonel Bıçak Seti",
-    price: 2500,
-    category: "Mutfak Gereçleri",
-    unit: "set",
-    image: "https://images.unsplash.com/photo-1593618998160-e34014e67546",
-    supplier: "Pro Ekipman A.Ş.",
-    description: "Yüksek kaliteli paslanmaz çelikten üretilmiş, profesyonel kullanım için ideal bıçak seti.",
-    desi: 3,
+    name: "El Örgüsü Hırka - Bej",
+    price: 525,
+    category: "Hırkalar",
+    unit: "adet",
+    image: "https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77",
+    supplier: "Zeynep's Handmade",
+    description: "Doğal pamuktan örülmüş, cepli, düğmeli hırka. Dört mevsim kullanılabilir.",
+    desi: 2,
     additionalImages: [
-      "https://images.unsplash.com/photo-1593618998160-e34014e67546",
-      "https://images.unsplash.com/photo-1593618998160-e34014e67547",
-      "https://images.unsplash.com/photo-1593618998160-e34014e67548"
+      "https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77",
+      "https://images.unsplash.com/photo-1618965348928-61a7b15c5471",
+      "https://images.unsplash.com/photo-1618965348935-c5a35e9af3cb"
     ]
   },
   {
     id: 3,
-    name: "Servis Tabakları (6'lı)",
-    price: 1200,
-    category: "Servis Ekipmanları",
-    unit: "set",
-    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
-    supplier: "Endüstriyel Mutfak Ltd.",
-    description: "Şık tasarımıyla dikkat çeken, dayanıklı servis tabakları seti.",
-    desi: 5,
+    name: "El Örgüsü Bere - Gri",
+    price: 120,
+    category: "Aksesuarlar",
+    unit: "adet",
+    image: "https://images.unsplash.com/photo-1510832842230-87253f48d74f",
+    supplier: "Zeynep's Handmade",
+    description: "Yumuşak dokulu, örgü desenli, sıcak tutan bere.",
+    desi: 1,
     additionalImages: [
-      "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
-      "https://images.unsplash.com/photo-1618160702438-9b02ab6515c10",
-      "https://images.unsplash.com/photo-1618160702438-9b02ab6515c11"
+      "https://images.unsplash.com/photo-1510832842230-87253f48d74f",
+      "https://images.unsplash.com/photo-1576249296566-5f547c1a1325",
+      "https://images.unsplash.com/photo-1576249334324-df2519ce0f83"
     ]
   },
   {
     id: 4,
-    name: "Garson Önlüğü",
-    price: 350,
-    category: "Tekstil",
+    name: "El Örgüsü Atkı - Mavi",
+    price: 180,
+    category: "Aksesuarlar",
     unit: "adet",
-    image: "https://images.unsplash.com/photo-1581299894007-aaa50297cf16",
-    supplier: "Tekstil Tedarik A.Ş.",
-    description: "Dayanıklı ve şık garson önlüğü, restoranlar için ideal.",
+    image: "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9",
+    supplier: "Zeynep's Handmade",
+    description: "Uzun, kalın dokulu, klasik örgü desenli atkı.",
     desi: 1,
     additionalImages: [
-      "https://images.unsplash.com/photo-1581299894007-aaa50297cf16",
-      "https://images.unsplash.com/photo-1581299894007-aaa50297cf17",
-      "https://images.unsplash.com/photo-1581299894007-aaa50297cf18"
+      "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9",
+      "https://images.unsplash.com/photo-1541680670548-88e8cd23c0f4",
+      "https://images.unsplash.com/photo-1541680670548-88e8cd23c0f5"
     ]
   },
   {
     id: 5,
-    name: "Endüstriyel Mikser",
-    price: 8500,
-    category: "Mutfak Ekipmanları",
+    name: "El Örgüsü Bebek Battaniyesi",
+    price: 350,
+    category: "Bebek",
     unit: "adet",
-    image: "https://images.unsplash.com/photo-1591261730799-ee4e6c2d16d7",
-    supplier: "Pro Ekipman A.Ş.",
-    description: "Yüksek kapasiteli endüstriyel mikser, profesyonel mutfaklar için tasarlandı.",
-    desi: 15,
+    image: "https://images.unsplash.com/photo-1596443686116-1dad91cb3e61",
+    supplier: "Zeynep's Handmade",
+    description: "Anti-alerjik pamuktan, bebek için özel üretilmiş, yumuşak battaniye.",
+    desi: 2,
     additionalImages: [
-      "https://images.unsplash.com/photo-1591261730799-ee4e6c2d16d7",
-      "https://images.unsplash.com/photo-1591261730799-ee4e6c2d16d8",
-      "https://images.unsplash.com/photo-1591261730799-ee4e6c2d16d9"
+      "https://images.unsplash.com/photo-1596443686116-1dad91cb3e61",
+      "https://images.unsplash.com/photo-1516627145497-ae6968895b74",
+      "https://images.unsplash.com/photo-1516627145497-ae6968895b75"
     ]
   },
   {
     id: 6,
-    name: "Masa Örtüsü (10'lu)",
-    price: 750,
-    category: "Tekstil",
-    unit: "set",
-    image: "https://images.unsplash.com/photo-1563290131-a6b9a0e8bea9",
-    supplier: "Tekstil Tedarik A.Ş.",
-    description: "Şık masa örtüleri seti, her türlü etkinlik için uygundur.",
-    desi: 2,
+    name: "El Örgüsü Patik Çoraplar",
+    price: 95,
+    category: "Ayakkabı",
+    unit: "çift",
+    image: "https://images.unsplash.com/photo-1608054908114-0c4920696154",
+    supplier: "Zeynep's Handmade",
+    description: "Kış için sıcak tutan, evde kullanıma uygun el örgüsü patikler.",
+    desi: 1,
     additionalImages: [
-      "https://images.unsplash.com/photo-1563290131-a6b9a0e8bea9",
-      "https://images.unsplash.com/photo-1563290131-a6b9a0e8bea10",
-      "https://images.unsplash.com/photo-1563290131-a6b9a0e8bea11"
+      "https://images.unsplash.com/photo-1608054908114-0c4920696154",
+      "https://images.unsplash.com/photo-1610959670113-728c01988e88",
+      "https://images.unsplash.com/photo-1610959670113-728c01988e89"
     ]
   },
   {
     id: 7,
-    name: "Endüstriyel Fırın",
-    price: 35000,
-    category: "Mutfak Ekipmanları",
+    name: "El Örgüsü Kazak - Yeşil",
+    price: 475,
+    category: "Kazaklar",
     unit: "adet",
-    image: "https://images.unsplash.com/photo-1590433332541-12e70dd1d4a9",
-    supplier: "Endüstriyel Mutfak Ltd.",
-    description: "Yüksek kapasiteli endüstriyel fırın, profesyonel mutfaklar için idealdir.",
-    desi: 100,
+    image: "https://images.unsplash.com/photo-1575512319219-df0ff5cb6ab1",
+    supplier: "Zeynep's Handmade",
+    description: "Nefes alabilen özel yün karışımı ile üretilmiş, sıcak tutan şık kazak.",
+    desi: 2,
     additionalImages: [
-      "https://images.unsplash.com/photo-1590433332541-12e70dd1d4a9",
-      "https://images.unsplash.com/photo-1590433332541-12e70dd1d4a10",
-      "https://images.unsplash.com/photo-1590433332541-12e70dd1d4a11"
+      "https://images.unsplash.com/photo-1575512319219-df0ff5cb6ab1",
+      "https://images.unsplash.com/photo-1607370890222-1cdb7a27dd08",
+      "https://images.unsplash.com/photo-1607370890223-1cdb7a27dd09"
     ]
   },
   {
     id: 8,
-    name: "Bar Blender",
-    price: 4500,
-    category: "Mutfak Ekipmanları",
-    unit: "adet",
-    image: "https://images.unsplash.com/photo-1570222094114-d054a817e56b",
-    supplier: "Pro Ekipman A.Ş.",
-    description: "Kafe ve restoranlar için ideal bar blender.",
-    desi: 4,
+    name: "El Örgüsü Eldiven - Kırmızı",
+    price: 85,
+    category: "Aksesuarlar",
+    unit: "çift",
+    image: "https://images.unsplash.com/photo-1607344645866-ba7cf6fd9d13",
+    supplier: "Zeynep's Handmade",
+    description: "Kış için ideal, sıcak tutan, şık tasarımlı el örgüsü eldivenler.",
+    desi: 1,
     additionalImages: [
-      "https://images.unsplash.com/photo-1570222094114-d054a817e56b",
-      "https://images.unsplash.com/photo-1570222094114-d054a817e56c",
-      "https://images.unsplash.com/photo-1570222094114-d054a817e56d"
+      "https://images.unsplash.com/photo-1607344645866-ba7cf6fd9d13",
+      "https://images.unsplash.com/photo-1610972857209-7ee00672dd3c",
+      "https://images.unsplash.com/photo-1610972857209-7ee00672dd3d"
     ]
   },
   {
     id: 9,
-    name: "Şef Kıyafeti Seti",
-    price: 1200,
-    category: "Tekstil",
+    name: "El Örgüsü Bebek Takımı",
+    price: 250,
+    category: "Bebek",
     unit: "set",
-    image: "https://images.unsplash.com/photo-1581299894681-aa3f46faddd7",
-    supplier: "Tekstil Tedarik A.Ş.",
-    description: "Profesyonel şef kıyafeti seti, restoranlar için tasarlandı.",
-    desi: 2,
+    image: "https://images.unsplash.com/photo-1600012967094-16ea260115be",
+    supplier: "Zeynep's Handmade",
+    description: "Şapka, yelek ve patikten oluşan, yumuşak pamuktan bebek takımı.",
+    desi: 1,
     additionalImages: [
-      "https://images.unsplash.com/photo-1581299894681-aa3f46faddd7",
-      "https://images.unsplash.com/photo-1581299894681-aa3f46faddd8",
-      "https://images.unsplash.com/photo-1581299894681-aa3f46faddd9"
+      "https://images.unsplash.com/photo-1600012967094-16ea260115be",
+      "https://images.unsplash.com/photo-1601799544970-692b7a6dd1de",
+      "https://images.unsplash.com/photo-1601799544971-692b7a6dd1df"
     ]
   },
   {
     id: 10,
-    name: "Endüstriyel Ocak",
-    price: 15000,
-    category: "Mutfak Ekipmanları",
+    name: "El Örgüsü Yastık Kılıfı",
+    price: 120,
+    category: "Ev",
     unit: "adet",
-    image: "https://images.unsplash.com/photo-1590433332931-7437f4786d11",
-    supplier: "Endüstriyel Mutfak Ltd.",
-    description: "Yüksek performanslı endüstriyel ocak, profesyonel mutfaklar için idealdir.",
-    desi: 40,
+    image: "https://images.unsplash.com/photo-1589710751893-f9a6770ad71b",
+    supplier: "Zeynep's Handmade",
+    description: "Dekoratif örgü desenli, %100 pamuk yastık kılıfı.",
+    desi: 1,
     additionalImages: [
-      "https://images.unsplash.com/photo-1590433332931-7437f4786d11",
-      "https://images.unsplash.com/photo-1590433332931-7437f4786d12",
-      "https://images.unsplash.com/photo-1590433332931-7437f4786d13"
+      "https://images.unsplash.com/photo-1589710751893-f9a6770ad71b",
+      "https://images.unsplash.com/photo-1589710657147-ef0b93c0eeba",
+      "https://images.unsplash.com/photo-1589710657147-ef0b93c0eebc"
     ]
   },
   {
     id: 11,
-    name: "Servis Tepsileri (4'lü)",
-    price: 800,
-    category: "Servis Ekipmanları",
-    unit: "set",
-    image: "https://images.unsplash.com/photo-1595856619767-ab951ca3b8bf",
-    supplier: "Pro Ekipman A.Ş.",
-    description: "Dayanıklı servis tepsileri seti, her türlü etkinlik için uygundur.",
-    desi: 6,
+    name: "El Örgüsü Masa Örtüsü",
+    price: 280,
+    category: "Ev",
+    unit: "adet",
+    image: "https://images.unsplash.com/photo-1566475955255-404134a79aed",
+    supplier: "Zeynep's Handmade",
+    description: "Geleneksel desenli, el işi masa örtüsü.",
+    desi: 2,
     additionalImages: [
-      "https://images.unsplash.com/photo-1595856619767-ab951ca3b8bf",
-      "https://images.unsplash.com/photo-1595856619767-ab951ca3b8bg",
-      "https://images.unsplash.com/photo-1595856619767-ab951ca3b8bh"
+      "https://images.unsplash.com/photo-1566475955255-404134a79aed",
+      "https://images.unsplash.com/photo-1586161513008-56f7ec0fe781",
+      "https://images.unsplash.com/photo-1586161513008-56f7ec0fe782"
     ]
   },
   {
     id: 12,
-    name: "Mutfak Önlüğü (3'lü)",
-    price: 450,
-    category: "Tekstil",
-    unit: "set",
-    image: "https://images.unsplash.com/photo-1581299894681-aa3f46faddd7",
-    supplier: "Tekstil Tedarik A.Ş.",
-    description: "Şık ve dayanıklı mutfak önlükleri seti.",
+    name: "El Örgüsü Çocuk Kazağı",
+    price: 220,
+    category: "Çocuk",
+    unit: "adet",
+    image: "https://images.unsplash.com/photo-1584051022121-6ee465f71c95",
+    supplier: "Zeynep's Handmade",
+    description: "Anti-alerjik pamuktan üretilmiş, şirin desenli çocuk kazağı.",
     desi: 1,
     additionalImages: [
-      "https://images.unsplash.com/photo-1581299894681-aa3f46faddd7",
-      "https://images.unsplash.com/photo-1581299894681-aa3f46faddd8",
-      "https://images.unsplash.com/photo-1581299894681-aa3f46faddd9"
+      "https://images.unsplash.com/photo-1584051022121-6ee465f71c95",
+      "https://images.unsplash.com/photo-1577881546586-4e879f01899d",
+      "https://images.unsplash.com/photo-1577881546586-4e879f01899e"
     ]
   }
 ];

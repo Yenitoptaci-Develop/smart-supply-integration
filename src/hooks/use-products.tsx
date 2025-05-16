@@ -166,7 +166,7 @@ const products: Product[] = [
   },
   {
     id: 11,
-    name: "El Örgüsü Masa Örtüsü",
+    name: "Özel Tasarım Masa Örtüsü",
     price: 280,
     category: "Ev",
     unit: "adet",
@@ -178,7 +178,8 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1566475955255-404134a79aed",
       "https://images.unsplash.com/photo-1586161513008-56f7ec0fe781",
       "https://images.unsplash.com/photo-1586161513008-56f7ec0fe782"
-    ]
+    ],
+    quoteOnly: true
   },
   {
     id: 12,
@@ -195,6 +196,40 @@ const products: Product[] = [
       "https://images.unsplash.com/photo-1577881546586-4e879f01899d",
       "https://images.unsplash.com/photo-1577881546586-4e879f01899e"
     ]
+  },
+  {
+    id: 13,
+    name: "Özel Tasarım El Örgüsü Örtü",
+    price: 0,
+    category: "Ev",
+    unit: "adet",
+    image: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4",
+    supplier: "Zeynep's Premium Collection",
+    description: "Tamamen kişiye özel hazırlanan, evinizin ölçülerine ve renklerine uygun tasarlanabilecek özel örtüler. Fiyat için lütfen teklif alın.",
+    desi: 3,
+    additionalImages: [
+      "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4",
+      "https://images.unsplash.com/photo-1581783342308-f792dbdd27c5",
+      "https://images.unsplash.com/photo-1588621332104-4cea229ffa40"
+    ],
+    quoteOnly: true
+  },
+  {
+    id: 14,
+    name: "Özel Tasarım El Örgüsü Perde",
+    price: 0,
+    category: "Ev",
+    unit: "adet",
+    image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38",
+    supplier: "Zeynep's Premium Collection",
+    description: "Evinizin pencere ölçülerine göre özel hazırlanan el örgüsü perdeler. Renk ve desen seçenekleri için teklif alın.",
+    desi: 4,
+    additionalImages: [
+      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38",
+      "https://images.unsplash.com/photo-1538688525198-9b88f6f53126",
+      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92"
+    ],
+    quoteOnly: true
   }
 ];
 

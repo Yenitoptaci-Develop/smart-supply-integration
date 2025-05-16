@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Product } from "@/types/product";
-import { ShoppingCart, Plus, Minus } from "lucide-react";
+import { ShoppingCart, Plus, Minus, Quote } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -17,6 +17,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
 interface CartSheetProps {
   cart: Array<{ product: Product; quantity: number }>;
@@ -47,7 +48,33 @@ export const CartSheet = ({
   setBillingInfo,
   setShowPayment,
 }: CartSheetProps) => {
-  const shippingCost = calculateShippingCost(cartTotalQuantity);
+  const { toast } = useToast();
+  
+  // Check if cart contains only quote-only products
+  const hasOnlyQuoteProducts = cart.length > 0 && cart.every(item => item.product.quoteOnly);
+  
+  // Check if cart has a mix of regular and quote-only products
+  const hasMixedProducts = cart.some(item => item.product.quoteOnly) && cart.some(item => !item.product.quoteOnly);
+  
+  // Calculate shipping cost (only for regular products)
+  const regularProductsCart = cart.filter(item => !item.product.quoteOnly);
+  const shippingCost = regularProductsCart.length > 0 ? calculateShippingCost(cartTotalQuantity) : 0;
+
+  // Calculate totals excluding quote-only products (which have no price)
+  const regularItemsTotal = cart.reduce((total, item) => {
+    if (!item.product.quoteOnly) {
+      return total + (item.product.price * item.quantity);
+    }
+    return total;
+  }, 0);
+
+  const handleQuoteRequest = () => {
+    toast({
+      title: "Teklif talebiniz gönderildi",
+      description: "Tedarikçi tarafından incelendikten sonra geçmiş siparişlerde görüntüleyebilirsiniz",
+    });
+    setShowPayment(false);
+  };
   
   return (
     <Sheet>
@@ -66,13 +93,28 @@ export const CartSheet = ({
           <SheetTitle>Sepetim</SheetTitle>
         </SheetHeader>
         <div className="mt-4 space-y-4">
+          {hasMixedProducts && (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-4">
+              <p className="text-yellow-700 text-sm">
+                Sepetinizde hem normal ürünler hem de teklif ürünleri bulunuyor. 
+                Bunları ayrı ayrı işleme almanız gerekiyor.
+              </p>
+            </div>
+          )}
+          
           {cart.map(item => (
             <div key={item.product.id} className="flex justify-between items-center">
               <div className="flex-1">
                 <p className="font-medium">{item.product.name}</p>
-                <p className="text-sm text-gray-500">
-                  {item.product.price} TL
-                </p>
+                {!item.product.quoteOnly ? (
+                  <p className="text-sm text-gray-500">
+                    {item.product.price} TL
+                  </p>
+                ) : (
+                  <p className="text-sm text-primary">
+                    Teklif ürünü
+                  </p>
+                )}
               </div>
               <div className="flex items-center gap-2">
                 <Button 
@@ -104,33 +146,47 @@ export const CartSheet = ({
           ))}
           {cart.length > 0 ? (
             <div className="border-t pt-4">
-              <div className="space-y-2">
-                <div className="flex justify-between font-medium">
-                  <span>Ara Toplam</span>
-                  <span>{cartTotal} TL</span>
+              {!hasOnlyQuoteProducts && (
+                <div className="space-y-2">
+                  <div className="flex justify-between font-medium">
+                    <span>Ara Toplam</span>
+                    <span>{regularItemsTotal} TL</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span>Kargo Bedeli</span>
+                    <span>{shippingCost} TL</span>
+                  </div>
+                  <div className="flex justify-between font-bold text-lg border-t pt-2">
+                    <span>Toplam</span>
+                    <span>{regularItemsTotal + shippingCost} TL</span>
+                  </div>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span>Kargo Bedeli</span>
-                  <span>{shippingCost} TL</span>
-                </div>
-                <div className="flex justify-between font-bold text-lg border-t pt-2">
-                  <span>Toplam</span>
-                  <span>{cartTotal + shippingCost} TL</span>
-                </div>
-              </div>
+              )}
+              
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button className="w-full mt-4">
-                    Ödemeye Geç
-                  </Button>
+                  {hasOnlyQuoteProducts ? (
+                    <Button className="w-full mt-4" variant="outline">
+                      <Quote className="h-4 w-4 mr-2" />
+                      Teklif İste
+                    </Button>
+                  ) : (
+                    <Button className="w-full mt-4">
+                      Ödemeye Geç
+                    </Button>
+                  )}
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>
-                    <DialogTitle>Ödeme Bilgileri</DialogTitle>
+                    <DialogTitle>
+                      {hasOnlyQuoteProducts ? "Teklif Talebi" : "Ödeme Bilgileri"}
+                    </DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4">
                     <div className="space-y-4">
-                      <h3 className="font-medium">Fatura Bilgileri</h3>
+                      <h3 className="font-medium">
+                        {hasOnlyQuoteProducts ? "Teklif Bilgileri" : "Fatura Bilgileri"}
+                      </h3>
                       <Input
                         placeholder="Firma Adı"
                         value={billingInfo.name}
@@ -157,16 +213,21 @@ export const CartSheet = ({
                         onChange={(e) => setBillingInfo({ ...billingInfo, phone: e.target.value })}
                       />
                     </div>
-                    <div className="space-y-4">
-                      <h3 className="font-medium">Kart Bilgileri</h3>
-                      <Input placeholder="Kart Numarası" />
-                      <div className="grid grid-cols-2 gap-4">
-                        <Input placeholder="Son Kullanma Tarihi" />
-                        <Input placeholder="CVV" />
+                    {!hasOnlyQuoteProducts && (
+                      <div className="space-y-4">
+                        <h3 className="font-medium">Kart Bilgileri</h3>
+                        <Input placeholder="Kart Numarası" />
+                        <div className="grid grid-cols-2 gap-4">
+                          <Input placeholder="Son Kullanma Tarihi" />
+                          <Input placeholder="CVV" />
+                        </div>
                       </div>
-                    </div>
-                    <Button className="w-full" onClick={() => setShowPayment(false)}>
-                      Ödemeyi Tamamla
+                    )}
+                    <Button 
+                      className="w-full" 
+                      onClick={hasOnlyQuoteProducts ? handleQuoteRequest : () => setShowPayment(false)}
+                    >
+                      {hasOnlyQuoteProducts ? "Teklif İste" : "Ödemeyi Tamamla"}
                     </Button>
                   </div>
                 </DialogContent>

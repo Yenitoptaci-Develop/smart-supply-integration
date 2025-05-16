@@ -30,15 +30,19 @@ export const ProductCard = ({
   onQuantityChange,
   onAddToCart,
 }: ProductCardProps) => {
-  const [quoteMessage, setQuoteMessage] = useState("");
+  const [quoteQuantity, setQuoteQuantity] = useState(1);
   const { toast } = useToast();
 
   const handleQuoteRequest = () => {
+    // Add quote item to the cart
+    onAddToCart(product, quoteQuantity);
+    
     toast({
-      title: "Teklif talebiniz iletildi",
-      description: "En kısa sürede size geri dönüş yapacağız",
+      title: "Teklif talebiniz sepete eklendi",
+      description: "Siparişi tamamla sayfasından satıcıya gönderebilirsiniz",
     });
-    setQuoteMessage("");
+    
+    setQuoteQuantity(1);
   };
 
   return (
@@ -146,18 +150,32 @@ export const ProductCard = ({
                   </>
                 ) : (
                   <div className="space-y-2">
-                    <Input 
-                      placeholder="Teklif talebiniz için not ekleyin (opsiyonel)"
-                      value={quoteMessage}
-                      onChange={(e) => setQuoteMessage(e.target.value)}
-                    />
+                    <div className="flex items-center gap-1 justify-end">
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => setQuoteQuantity(Math.max(1, quoteQuantity - 1))}
+                      >
+                        <Minus className="h-3 w-3" />
+                      </Button>
+                      <span className="w-8 text-center">
+                        {quoteQuantity}
+                      </span>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => setQuoteQuantity(quoteQuantity + 1)}
+                      >
+                        <Plus className="h-3 w-3" />
+                      </Button>
+                    </div>
                     <Button 
                       size="sm"
                       className="w-full"
                       onClick={handleQuoteRequest}
                     >
                       <Quote className="h-4 w-4 mr-2" />
-                      Teklif Al
+                      Teklif İste
                     </Button>
                   </div>
                 )}
@@ -256,21 +274,28 @@ export const ProductCard = ({
                     </DialogDescription>
                   </DialogHeader>
                   <div className="space-y-4 py-4">
-                    <Input 
-                      placeholder="İsim Soyisim"
-                      className="mb-2"
-                    />
-                    <Input 
-                      placeholder="E-posta Adresiniz"
-                      className="mb-2"
-                    />
-                    <Input 
-                      placeholder="Telefon Numaranız"
-                      className="mb-2"
-                    />
-                    <Input 
-                      placeholder="Özel talepleriniz (opsiyonel)"
-                    />
+                    <div className="flex items-center gap-2 mb-4">
+                      <label className="text-sm font-medium">Adet:</label>
+                      <div className="flex items-center gap-1">
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => setQuoteQuantity(Math.max(1, quoteQuantity - 1))}
+                        >
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <span className="w-8 text-center">
+                          {quoteQuantity}
+                        </span>
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => setQuoteQuantity(quoteQuantity + 1)}
+                        >
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                   <DialogFooter>
                     <Button 

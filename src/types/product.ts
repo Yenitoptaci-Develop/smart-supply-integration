@@ -10,5 +10,5 @@ export interface Product {
   description?: string;
   additionalImages?: string[];
   desi: number;
-  quoteOnly?: boolean; // New field to identify quote-only products
+  quoteOnly?: boolean; // Identifies quote-only products
 }

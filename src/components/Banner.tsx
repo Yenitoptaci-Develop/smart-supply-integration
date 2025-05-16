@@ -12,21 +12,21 @@ export const Banner = ({ className }: BannerProps) => {
   const bannerImages = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1582978087598-088c059ea414",
+      src: "https://images.unsplash.com/photo-1582978087598-088c059ea414?q=80&w=1740&auto=format&fit=crop",
       alt: "El örgüsü koleksiyonu",
       title: "El Yapımı Özel Koleksiyon",
       subtitle: "Birbirinden özel el örgüsü ürünleri keşfedin"
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1579724138975-1308fc0c50fd",
+      src: "https://images.unsplash.com/photo-1579724138975-1308fc0c50fd?q=80&w=1740&auto=format&fit=crop",
       alt: "Yeni sezon ürünleri",
       title: "Yeni Sezon Ürünleri",
       subtitle: "En son el örgüsü tasarımlarımızı inceleyin"
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1624593911234-94fc11d1d214",
+      src: "https://images.unsplash.com/photo-1624593911234-94fc11d1d214?q=80&w=1740&auto=format&fit=crop",
       alt: "Özel indirimler",
       title: "Özel İndirimler",
       subtitle: "Sınırlı süre için özel fiyatları kaçırmayın"
@@ -45,6 +45,11 @@ export const Banner = ({ className }: BannerProps) => {
                     src={image.src}
                     alt={image.alt}
                     className="object-cover w-full h-full rounded-lg"
+                    loading="eager"
+                    onError={(e) => {
+                      console.error(`Failed to load image: ${image.src}`);
+                      (e.target as HTMLImageElement).src = "https://placehold.co/1600x400/e2e8f0/64748b?text=El+%C3%96rg%C3%BCs%C3%BC+%C3%9Cr%C3%BCnler";
+                    }}
                   />
                 </AspectRatio>
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 rounded-b-lg">
